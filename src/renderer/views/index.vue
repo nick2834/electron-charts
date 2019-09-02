@@ -6,7 +6,7 @@
 import echarts from "echarts";
 import "echarts-gl";
 import { baseJson } from "@/api/base";
-import resize from './mixins/resize'
+import resize from "./mixins/resize";
 function getAirportCoord(idx) {
   return [baseJson.airports[idx][3], baseJson.airports[idx][4]];
 }
@@ -14,12 +14,12 @@ var routes = baseJson.routes.map(function(airline) {
   return [getAirportCoord(airline[1]), getAirportCoord(airline[2])];
 });
 export default {
-  mixins:[resize],
+  mixins: [resize],
   data() {
     return {
       chart: null,
-      worldTopo: require("@/assets/images/world.topo.bathy.200401.jpg"),
-      bathymetry_bw_composite_4k: require("@/assets/images/bathymetry_bw_composite_4k.jpg")
+      world_front: require("@/assets/images/world_front.jpg"),
+      world_back: require("@/assets/images/world_back.jpg")
     };
   },
   methods: {
@@ -27,8 +27,8 @@ export default {
       this.chart.setOption({
         backgroundColor: "#000",
         globe: {
-          baseTexture: this.worldTopo,
-          heightTexture: this.bathymetry_bw_composite_4k,
+          baseTexture: this.world_front,
+          heightTexture: this.world_back,
           shading: "lambert",
           light: {
             ambient: {
