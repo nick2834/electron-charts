@@ -21,6 +21,14 @@ export default new Router({
       component: require('@/views/index2').default
     },
     {
+      path: '/map',
+      name: 'baiduMap',
+      meta: {
+        title: "百度地图"
+      },
+      component: require('@/views/baiduMap').default
+    },
+    {
       path: '*',
       redirect: '/',
       hidden: true

@@ -4,11 +4,13 @@ import router from './router'
 import store from './store'
 import ElementUI from 'element-ui'; // element
 import 'element-ui/lib/theme-chalk/index.css'; // element css
-import '@/styles/index.scss' // global css
-
+import '@/assets/styles/index.scss' // global css
+import BaiduMap from 'vue-baidu-map';
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.config.productionTip = false
-
+Vue.use(BaiduMap, {
+  ak: 'sg8h16g3aCQfMVSM7tQkKvVTjpHYYsUN'
+})
 Vue.use(ElementUI);
 
 new Vue({
