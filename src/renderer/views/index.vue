@@ -1,5 +1,5 @@
 <template>
-  <div :style="{height:'100vh',width:'100%'}" ref="myEchart"></div>
+  <div :style="{height:'calc(100vh - 60px)',width:'100%'}" ref="myEchart"></div>
 </template>
 
 <script>

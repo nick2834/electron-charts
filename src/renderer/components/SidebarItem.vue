@@ -36,7 +36,7 @@ export default {
       return newObj;
     },
     switchBucket(data) {
-      console.log(data);
+      // console.log(data);
     }
   },
   mounted() {
