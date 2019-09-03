@@ -14,12 +14,20 @@ export default {
   mixins: [resize],
   data() {
     return {
-      chart: null
+      chart: null,
+      loadingOption: {
+        text: "获取数据中",
+        color: "#c23531",
+        textColor: "#fff",
+        maskColor: "rgba(0, 0, 0, 0.8)",
+        zlevel: 0
+      }
     };
   },
   mounted() {
     this.$nextTick(() => {
       this.chart = echarts.init(this.$refs.myEchart); //这里是为了获得容器所在位置
+      this.chart.showLoading(this.loadingOption);
       http.get(baseUrl).then(({ data }) => {
         var windData = data;
         var data = [];
@@ -224,6 +232,9 @@ export default {
             }
           }
         ]
+      });
+      this.$nextTick(() => {
+        this.chart.hideLoading();
       });
     }
   }
