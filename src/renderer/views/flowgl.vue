@@ -42,6 +42,7 @@ export default {
   methods: {
     setOptions(data) {
       this.chart.setOption({
+        backgroundColor: "#000",
         visualMap: {
           show: false,
           min: valMin,
