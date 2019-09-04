@@ -1,13 +1,18 @@
 // app：控制应用生命周期的模块
 // BrowserWindow：创建本地浏览器窗口的模块
-import { app, BrowserWindow, ipcMain, Menu } from "electron";
+import {
+  app,
+  BrowserWindow,
+  ipcMain,
+  Menu
+} from "electron";
 import template from "./config/menu";
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 // 加载地址
 const homeURL =
-  process.env.NODE_ENV === "development"
-    ? `http://localhost:9080/#layout`
-    : `file://${__dirname}/index.html#layout`;
+  process.env.NODE_ENV === "development" ?
+  `http://localhost:9080/#layout` :
+  `file://${__dirname}/index.html#layout`;
 
 // 创建新窗口的初始化配置
 let defaultWindowConfig = {
@@ -26,8 +31,12 @@ function createWindow(config) {
     ...defaultWindowConfig,
     width: 980,
     height: 650,
+    show: false,
     ...config
   });
+  mainWin.on('ready-to-show', function () {
+    mainWin.show() // 初始化后再显示
+  })
   // 默认加载登录界面
   mainWin.loadURL(homeURL);
   // 当窗口关闭时调用的方法
@@ -59,5 +68,5 @@ app.on("activate", () => {
 ipcMain.on("switchToHome", () => {
   mainWin.loadURL(homeURL);
   mainWin.setContentSize(980, 650);
-  
+
 });

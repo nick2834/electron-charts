@@ -1,23 +1,23 @@
 import { app } from "electron";
 
 export default [
-  {
-    label: "Application",
-    submenu: [
-      {
-        label: "关于七牛",
-        selector: "orderFrontStandardAboutPanel:"
-      },
-      { type: "separator" },
-      {
-        label: "退出",
-        accelerator: "Command+Q",
-        click: function() {
-          app.quit();
-        }
-      }
-    ]
-  },
+  // {
+  //   label: "Application",
+  //   submenu: [
+  //     {
+  //       label: "关于七牛",
+  //       selector: "orderFrontStandardAboutPanel:"
+  //     },
+  //     { type: "separator" },
+  //     {
+  //       label: "退出",
+  //       accelerator: "Command+Q",
+  //       click: function() {
+  //         app.quit();
+  //       }
+  //     }
+  //   ]
+  // },
   {
     label: "编辑",
     submenu: [

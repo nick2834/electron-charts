@@ -4,6 +4,7 @@
       <img
         :src="logo"
         alt="logo"
+        @click="changeCollapse"
       >
     </h1>
     <p
@@ -29,6 +30,9 @@ export default {
     };
   },
   methods: {
+    changeCollapse(){
+      this.$emit('change-collapse')
+    },
     quit() {
       this.$store.dispatch("RemoveToken");
       this.$electron.ipcRenderer.send("switchToLogin");

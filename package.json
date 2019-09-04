@@ -1,8 +1,8 @@
 {
-  "name": "qiniu",
-  "version": "0.6.2",
-  "author": "'zhen-ke' <cool420984@gmail.com>",
-  "description": "electron-vue 七牛客户端",
+  "name": "global-weather",
+  "version": "1.0.0",
+  "author": "'nico-xu' <nickxu2834@gmail.com>",
+  "description": "global-weather 全球气候监控",
   "license": "MIT",
   "main": "./dist/electron/main.js",
   "repository": {
@@ -22,8 +22,8 @@
     "postinstall": "npm run lint"
   },
   "build": {
-    "productName": "qiniu",
-    "appId": "org.simulatedgreg.electron-vue",
+    "productName": "globalWeather",
+    "appId": "org.simulatedgreg.global-weather",
     "directories": {
       "output": "build"
     },
@@ -60,10 +60,7 @@
     "echarts": "^4.2.1",
     "echarts-gl": "^1.1.1",
     "element-ui": "^2.12.0",
-    "qiniu": "^7.2.1",
-    "v-charts": "^1.19.0",
     "vue": "^2.5.16",
-    "vue-baidu-map": "^0.21.22",
     "vue-electron": "^1.0.6",
     "vue-router": "^2.5.3",
     "vuex": "^3.0.1"

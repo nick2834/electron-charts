@@ -19,7 +19,14 @@ export default {
     return {
       chart: null,
       world_front: require("@/assets/images/world_front.jpg"),
-      world_back: require("@/assets/images/world_back.jpg")
+      world_back: require("@/assets/images/world_back.jpg"),
+      loadingOption: {
+        text: "获取数据中",
+        color: "#c23531",
+        textColor: "#fff",
+        maskColor: "rgba(0, 0, 0, 0.8)",
+        zlevel: 0
+      }
     };
   },
   methods: {
@@ -54,11 +61,22 @@ export default {
           data: routes
         }
       });
+      this.chart.on('rendered',() =>{
+        this.chart.hideLoading();
+      })
     }
   },
+  beforeDestroy() {
+    if (!this.chart) {
+      return;
+    }
+    this.chart.dispose();
+    this.chart = null;
+  },
   mounted() {
-    this.chart = echarts.init(this.$refs.myEchart); //这里是为了获得容器所在位置
     this.$nextTick(() => {
+      this.chart = echarts.init(this.$el);
+      this.chart.showLoading(this.loadingOption);
       this.setOptions();
     });
   }

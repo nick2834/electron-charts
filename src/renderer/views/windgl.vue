@@ -15,6 +15,7 @@ export default {
   data() {
     return {
       chart: null,
+      windData: null,
       loadingOption: {
         text: "获取数据中",
         color: "#c23531",
@@ -24,10 +25,22 @@ export default {
       }
     };
   },
+  beforeDestroy() {
+    if (!this.chart) {
+      return;
+    }
+    this.chart.dispose();
+    this.chart = null;
+  },
   mounted() {
     this.$nextTick(() => {
-      this.chart = echarts.init(this.$refs.myEchart); //这里是为了获得容器所在位置
+      this.chart = echarts.init(this.$refs.myEchart);
       this.chart.showLoading(this.loadingOption);
+      this.getData();
+    });
+  },
+  methods: {
+    getData() {
       http.get(baseUrl).then(({ data }) => {
         var windData = data;
         var data = [];
@@ -56,9 +69,7 @@ export default {
         }
         this.setOptions(maxMag, minMag, data);
       });
-    });
-  },
-  methods: {
+    },
     setOptions(maxMag, minMag, data) {
       this.chart.setOption({
         visualMap: {
@@ -233,9 +244,9 @@ export default {
           }
         ]
       });
-      this.$nextTick(() => {
+      this.chart.on('rendered',() =>{
         this.chart.hideLoading();
-      });
+      })
     }
   }
 };

@@ -22,6 +22,13 @@ export default {
   mounted() {
     this.getMapBusLines();
   },
+  beforeDestroy() {
+    if (!this.chart) {
+      return
+    }
+    this.chart.dispose()
+    this.chart = null
+  },
   methods: {
     setOptions(busLines) {
       this.chart.setOption({

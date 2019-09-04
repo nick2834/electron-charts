@@ -223,10 +223,17 @@ export default {
     return { chart: null };
   },
   mounted() {
-    this.chart = echarts.init(this.$refs.myEchart); //这里是为了获得容器所在位置
     this.$nextTick(() => {
+      this.chart = echarts.init(this.$refs.myEchart); //这里是为了获得容器所在位置
       this.setOptions();
     });
+  },
+  beforeDestroy() {
+    if (!this.chart) {
+      return;
+    }
+    this.chart.dispose();
+    this.chart = null;
   },
   methods: {
     setOptions() {

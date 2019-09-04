@@ -8,7 +8,8 @@ export default new Router({
       path: '/',
       name: 'layout',
       meta: {
-        title: "Gl路径"
+        title: "模拟地球",
+        icon: "icon-piechart"
       },
       component: require('@/views/index').default
     },
@@ -16,9 +17,19 @@ export default new Router({
       path: '/heatmap',
       name: 'Heatmap',
       meta: {
-        title: "热力图"
+        title: "热力图",
+        icon: "icon-pointmap"
       },
       component: require('@/views/Heatmap').default
+    },
+    {
+      path: '/bar',
+      name: 'Bar',
+      meta: {
+        title: "柱状图",
+        icon: "icon-barchart"
+      },
+      component: require('@/views/bar').default
     },
     // {
     //   path: '/lines',
@@ -32,15 +43,26 @@ export default new Router({
       path: '/windgl',
       name: 'Windgl',
       meta: {
-        title: "全球风力"
+        title: "全球风力",
+        icon: "icon-radarchart"
       },
       component: require('@/views/windgl').default
+    },
+    {
+      path: '/winds',
+      name: 'winds',
+      meta: {
+        title: "全球风力2",
+        icon: "icon-radarchart"
+      },
+      component: require('@/views/winds').default
     },
     {
       path: '/flowgl',
       name: 'Flowgl',
       meta: {
-        title: "GL 矢量场图"
+        title: "GL 矢量场图",
+        icon: "icon-areachart"
       },
       component: require('@/views/flowgl').default
     },

@@ -1,16 +1,12 @@
 <template>
-  <el-menu
-    :default-active="$route.path"
-    router
-  >
-    <el-menu-item
-      :index="item.path"
-      v-for="(item,index) in menuRouter"
-      :key="index"
-      @click="switchBucket(item)"
-    >
-      <i class="icon"></i>
-      <span slot="title">{{item.meta.title}}</span>
+  <el-menu :default-active="$route.path" router active-text-color="#0052D9">
+    <el-menu-item :index="item.path" v-for="(item,index) in menuRouter" :key="index">
+      <template slot="title">
+        <i class="iconfont" :class="item.meta.icon"></i>
+        <span slot="title">{{item.meta.title}}</span>
+        <i class="el-icon-arrow-right select"></i>
+      </template>
+
       <!-- <i class="el-icon-delete delete" @click.stop.prevent="beforeDelete(item)"></i> -->
     </el-menu-item>
   </el-menu>
@@ -34,9 +30,6 @@ export default {
         }
       }
       return newObj;
-    },
-    switchBucket(data) {
-      // console.log(data);
     }
   },
   mounted() {
@@ -48,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.delete {
+.select {
   position: absolute;
   right: 0;
   top: 12px;
