@@ -56,7 +56,7 @@
     }
   },
   "dependencies": {
-    "axios": "^0.16.1",
+    "axios": "^0.21.1",
     "echarts": "^4.2.1",
     "echarts-gl": "^1.1.1",
     "element-ui": "^2.12.0",
